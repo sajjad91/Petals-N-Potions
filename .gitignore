@@ -59,9 +59,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-LostTwins2/Library/*
-LostTwins2/Temp/*
-LostTwins2/obj/*
+PetalsNPotions/Library/*
+PetalsNPotions/Temp/*
+PetalsNPotions/obj/*
 *.userprefs
 *.sln
 *.csproj

@@ -8,12 +8,12 @@ public class PetalsMenu : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private List<FlowerData> flowersData = new List<FlowerData>();
     private List<PetalUiController> petalUiControllers = new List<PetalUiController>();
-    private List<string> appliedPetals = new List<string>();
+    private List<PetalUiController> appliedPetals = new List<PetalUiController>();
     private bool shouldShowMenu = false;
-
     private bool verifyFormulaStatus = false;
-
     private int appliedCountRequired = 3;
+
+    [SerializeField] private FormulaData activeFormulaData;
 
     private void Start()
     {
@@ -68,18 +68,25 @@ public class PetalsMenu : MonoBehaviour
             }
         }
 
-        if(appliedPetals.Count >= appliedCountRequired && !verifyFormulaStatus)
+        if (appliedPetals.Count >= appliedCountRequired && !verifyFormulaStatus)
         {
             verifyFormulaStatus = true;
+            bool isFormulaValid = GameController.Instance.IsFormulaValid(activeFormulaData.formulaName, appliedPetals);
 
-
+            if (!isFormulaValid)
+            {
+                EmptyAppliedPetals();
+            }
+            else
+            {
+                //change image for the potion from empty to half filled;
+            }
         }
-        
     }
 
-    public void AddToAppliedFlowers(string flowerName)
+    public void AddToAppliedFlowers(PetalUiController flower)
     {
-        appliedPetals.Add(flowerName);
+        appliedPetals.Add(flower);
     }
 
     public void EmptyAppliedPetals()
@@ -88,7 +95,7 @@ public class PetalsMenu : MonoBehaviour
         {
             for (int j = 0; j < petalUiControllers.Count; j++)
             {
-                if (petalUiControllers[j].name == appliedPetals[i])
+                if (petalUiControllers[j].name == appliedPetals[i].name)
                 {
                     petalUiControllers[j].UpdateCount(1);
                     break;

@@ -73,16 +73,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public bool IsFormulaValid(string name, List<string> appliedFlowersName)
+    public bool IsFormulaValid(string name, List<PetalUiController> appliedFlowersName)
     {
-        for(int i = 0; i < formulas.Count; i++)
+        for (int i = 0; i < formulas.Count; i++)
         {
-            if(name == formulas[i].formulaName)
+            if (name == formulas[i].formulaName)
             {
-                
-                for(int j = 0; j < formulas[i].requiredFlowerNames.Count; j++)
+
+                for (int j = 0; j < formulas[i].requiredFlowerNames.Count; j++)
                 {
-                    if (!formulas[i].requiredFlowerNames[j].Contains(appliedFlowersName[j]))
+                    if (!formulas[i].requiredFlowerNames[j].Contains(appliedFlowersName[j].name))
                         return false;
                 }
 
@@ -93,7 +93,6 @@ public class GameController : MonoBehaviour
         return false;
     }
 }
-
 
 [Serializable]
 public class FormulaData

@@ -42,7 +42,7 @@ public class PetalUiController : MonoBehaviour
         {
             count--;
             _countText.text = count.ToString();
-            _petalsMenu.AddToAppliedFlowers(name);
+            _petalsMenu.AddToAppliedFlowers(this);
         }
     }
 

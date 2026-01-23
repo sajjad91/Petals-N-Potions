@@ -7,7 +7,12 @@ public class MenuController : MonoBehaviour
 {
     public static MenuController Instance;
     [SerializeField] private PetalsMenu _petalsMenu;
+    [SerializeField] private RecipesMenu _recipeMenu;
+    [SerializeField] private Gameplayscreen _gameplayScreen;
+    [SerializeField] private DialogueBoxManager _npcDialogBoxManager;
 
+    private bool shouldShowCollectedAnimation = false;
+    private bool shouldShowNpcDialogBox = false;
     private void Awake()
     {
         if(Instance == null)
@@ -18,14 +23,65 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void ShowPetalsMenu()
     {
         _petalsMenu.ShowMenu();
+        _gameplayScreen.HideRecipeHud();
+    }
+
+    public void ShowRecipeHud()
+    {
+        _gameplayScreen.ShowRecipeHud();
     }
 
     public void HidePetalsMenu()
     {
         _petalsMenu.HideMenu();
+    }
+
+    public void ShowRecipesMenu()
+    {
+        _recipeMenu.ShowMenu();
+    }
+
+    public void HideRecipesMenu()
+    {
+        _recipeMenu.HideMenu();
+    }
+
+    public void UpdateRecipeCollectedCount()
+    {
+        _gameplayScreen.UpdateRecipeCollectedCount();
+    }
+
+    public void ShowRecipeCollectedAnimation()
+    {
+        _gameplayScreen.ShowRecipeCollectedAnimation();
+    }
+
+    public void UnlockRecipe(FormulaType _formulaType)
+    {
+        _recipeMenu.UnlockRecipe(_formulaType);
+    }
+
+    public void ShowNpcDialogue(int index, bool isRewardingDialogue = default)
+    {
+        _npcDialogBoxManager.ShowDialogue(index, isRewardingDialogue);
+    }
+
+    public void HideNpcDialogue()
+    {
+        _npcDialogBoxManager.HideDialogue();
+    }
+
+    public void UpdateCoinsCount(int value)
+    {
+        _gameplayScreen.UpdateCoins(value);
     }
 }
 

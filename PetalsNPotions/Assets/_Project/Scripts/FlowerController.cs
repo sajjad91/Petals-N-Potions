@@ -37,8 +37,6 @@ public class FlowerController : MonoBehaviour
                 gameObject.SetActive(false);
                 _playerController.HasUserPressedEToPickFlower = false;
                 _playerController = null;
-
-
             }
         }
     }

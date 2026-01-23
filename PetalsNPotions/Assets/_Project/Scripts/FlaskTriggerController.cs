@@ -5,7 +5,9 @@ using UnityEngine;
 public class FlaskTriggerController : MonoBehaviour
 {
     private Vector3 initialLocalScale;
+    private bool isPotionPrepared = false;
 
+    public bool IsPotionPrepared { get => isPotionPrepared; set => isPotionPrepared = value; }
 
     private void Start()
     {

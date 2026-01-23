@@ -9,7 +9,10 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<FlowerData> flowers = new List<FlowerData>();
     [SerializeField] private List<FormulaData> formulas = new List<FormulaData>();
+    [SerializeField] private FlaskTriggerController _flaskTriggerController;
 
+
+    public FlaskTriggerController FlaskTriggerController { get => _flaskTriggerController; }
     public List<FlowerData> GetFlowerDatas()
     {
         return flowers;

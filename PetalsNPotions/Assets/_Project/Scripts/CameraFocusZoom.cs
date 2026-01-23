@@ -34,15 +34,25 @@ public class CameraFocusZoom : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                zoomedIn = true;
-                MenuController.Instance.ShowPetalsMenu();
-                GameplayManager.Instance.DisablePlayerControls = true;
+                if(!GameController.Instance.FlaskTriggerController.IsPotionPrepared)
+                {
+                    zoomedIn = true;
+                    MenuController.Instance.ShowPetalsMenu();
+                    GameplayManager.Instance.DisablePlayerControls = true;
+                }
 
+                else
+                {
+                    Debug.Log("Potion is already prepared.");
+                    GameController.Instance.FlaskTriggerController.gameObject.SetActive(false);
+                    MenuController.Instance.ShowNpcDialogue(1, true);
+                }
 
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                MenuController.Instance.ShowRecipeHud();
                 zoomedIn = false;
                 MenuController.Instance.HidePetalsMenu();
                 GameplayManager.Instance.DisablePlayerControls = false;

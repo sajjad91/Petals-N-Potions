@@ -38,7 +38,8 @@ public class PetalUiController : MonoBehaviour
 
     public void OnClickCallback()
     {
-        if(count > 0)
+        Debug.Log("On Clicked Petal: " + name);
+        if (count > 0)
         {
             count--;
             _countText.text = count.ToString();

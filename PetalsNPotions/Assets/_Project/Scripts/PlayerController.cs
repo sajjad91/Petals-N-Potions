@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Position:" + Vector3.Distance(transform.position, doorTrigger.position));
 
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             hasUserPressedEToPickFlower = true;
         }
@@ -115,6 +115,10 @@ public class PlayerController : MonoBehaviour
 
         if (GameplayManager.Instance)
             GameplayManager.Instance.CameraController.RevertBlackFade();
+
+        yield return new WaitForSeconds(0.2f);
+
+        MenuController.Instance.ShowNpcDialogue(0);
 
         yield break;
     }

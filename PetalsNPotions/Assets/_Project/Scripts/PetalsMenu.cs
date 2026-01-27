@@ -81,6 +81,7 @@ public class PetalsMenu : MonoBehaviour
             if (!isFormulaValid)
             {
                 EmptyAppliedPetals();
+                verifyFormulaStatus = false;
             }
             else
             {
@@ -141,5 +142,7 @@ public class PetalsMenu : MonoBehaviour
                 }
             }
         }
+
+        appliedPetals.Clear();
     }
 }
